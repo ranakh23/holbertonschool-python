@@ -1,6 +1,2 @@
-#!/usr/bin/python3
-import os
-import importlib
-s=(os.environ['PYFILE'])
-s=s[:-3]
-i = importlib.import_module(s)
+#!/bin/bash
+python3 $PYFILE
