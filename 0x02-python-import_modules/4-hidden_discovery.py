@@ -2,4 +2,5 @@
 import hidden_4
 if __name__ == "__main__":
     for i in range(len(dir(hidden_4))):
-        print(dir(hidden_4)[j])
+        if dir(hidden_4)[i][0:2] != "__":
+            print(dir(hidden_4)[i])
