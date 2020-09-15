@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-"""
-dsfsdf
-"""
-
-
+# ebjhsdfjh
 import math
 
 
