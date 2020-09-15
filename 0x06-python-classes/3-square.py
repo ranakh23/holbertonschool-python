@@ -9,9 +9,9 @@ class Square:
     dsfdsf
     """
     def __init__(self, size=0):
-    """
-    dsfdsf
-    """
+        """
+        dsfdsf
+        """
         if type(size) != int:
             raise TypeError('size must be an integer')
         elif size < 0:
@@ -20,8 +20,8 @@ class Square:
             self.__size = size
 
     def area(self):
-    """
-    dsfdsf
-    """
+        """
+        dsfdsf
+        """
         size = self.__size
         return size * size
