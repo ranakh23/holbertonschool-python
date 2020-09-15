@@ -6,6 +6,7 @@ dsfsdf
 
 import math
 
+
 # fdjhfsdj
 class MagicClass:
     # dsfksdfkj
