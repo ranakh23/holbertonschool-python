@@ -2,4 +2,6 @@
 """fdhdfjah
 """
 class Square:
+    """dfjsh
+    """
     pass
