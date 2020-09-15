@@ -2,30 +2,32 @@
 """
 dsfs
 """
+
+
 class Square:
-"""
-dfsf
-"""
+    """
+    dfsf
+    """
     def __init__(self, size=0):
-    """
-    dsffds
-    """
+        """
+        dsffds
+        """
         self.__size = size
 
     # Property
     @property
     def size(self):
-    """
-    dfsfds
-    """
+        """
+        dfsfds
+        """
         return self.__size
 
     # Setter modifies
     @size.setter
     def size(self, value):
-    """
-    sdfs
-    """
+        """
+        sdfs
+        """
         if type(value) != int:
             raise TypeError('size must be an integer')
         elif value < 0:
@@ -34,7 +36,7 @@ dfsf
             self.__size = value
 
     def area(self):
-    """
-    dsfdsf
-    """
+        """
+        dsfdsf
+        """
         return self.__size ** 2
