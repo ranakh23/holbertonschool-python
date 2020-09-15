@@ -2,6 +2,7 @@
 ""dfdsf
 """
 class Square:
-    """dfsf"""
+"""dfsf
+"""
     def __init__(self, size):
         self.__size = size
