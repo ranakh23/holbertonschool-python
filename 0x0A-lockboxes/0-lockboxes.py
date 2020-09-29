@@ -1,21 +1,30 @@
 #!/usr/bin/python3
 """
-module containing canUnlockAll function
+    Determine wether all boxes can be unlocked by other boxes' values
+    @boxes: 2d array of boxes with values inside them
+    Returns: True or False
 """
 
 
 def canUnlockAll(boxes):
-    """ determines if all the boxes can be opened """
-    keys = {0}
-    done = False
+    stack = [0]
+    unlocked = [1] + [0] * (len(boxes) - 1)
+    i = 0
 
-    while not done:
-        updated = False
-        for i in range(len(boxes)):
-            if i in keys:
-                for key in boxes[i]:
-                    if key not in keys:
-                        updated = True
-                    keys.add(key)
-        done = True if not updated else False
-    return len(keys) == len(boxes)
+    if len(boxes) == 0:
+        return True
+    if not isinstance(boxes, list):
+        return False
+    while stack:
+        p = stack.pop()
+        for key in boxes[p]:
+            if key > 0 and key < len(boxes) and unlocked[key] == 0:
+                unlocked[key] = 1
+                stack.append(key)
+        i = i + 1
+
+    if 0 in unlocked:
+        return False
+    else:
+        return True
+
