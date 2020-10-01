@@ -1,21 +1,17 @@
 #!/usr/bin/python3
-"""read_lines
 """
-import os
+Contains the "read_lines" function
+"""
 
 
 def read_lines(filename="", nb_lines=0):
-    """Takes in str filename to read, and n lines w/ int nb_lines
-    """
-
-
-    with open(filename, encoding="utf-8") as readFile:
-        lineNum = 0
-        while True:
-            line = readFile.readline()
-            lineNum += 1
-            print(line, end='')
-            if lineNum >= nb_lines and nb_lines > 0:
-                break 
-            if not line:
+    """reads n lines of a text file (UTF8) and prints it to stdout"""
+    with open(filename, 'r', encoding='utf-8') as f:
+        if nb_lines <= 0:
+            print(f.read(), end='')
+            return
+        i = 0
+        for i, line in enumerate(f):
+            if i == nb_lines:
                 break
+            print(line, end='')
