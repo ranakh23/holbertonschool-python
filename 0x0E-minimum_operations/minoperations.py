@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-"""calculates the fewest number of operations needed"""
+'''
+method that calculates the fewest number of operations
+needed to result in exactly n H characters in the file.
+'''
 
 
 def minOperations(n):
-    """minimum of operation"""
-    if n < 2 or type(n) is not int:
-        return 0
-    descompose = []
-    val = n
-    i = 1
-    while val != 1:
-        i += 1
-        if val % i == 0:
-            while (val % i == 0 and val != 1):
-                val = val / i
-                descompose.append(i)
-    return sum(descompose)
+    result = 0
+    number = n
+    for i in range(2, number + 1):
+        while (number % i == 0):
+            result += i
+            number /= i
+            if number < i:
+                break
+    return result
