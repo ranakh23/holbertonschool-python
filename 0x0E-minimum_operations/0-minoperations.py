@@ -1,22 +1,18 @@
 #!/usr/bin/python3
-import math
+"""calculates the fewest number of operations needed"""
 
 
 def minOperations(n):
-    """ Calculates the fewest number of operations needed to result in
-        exactly n H characters.
-        Args:
-            @n: integer
-        Return:
-            the fewest number of operations needed to result in n H characters
-    """
-    suma = 0
-    if n <= 1:
-        return suma
-    for i in range(2, int(math.sqrt(n) + 1)):
-        while n % i == 0:
-            suma += i
-            n = n // i
-    if n > 1:
-        suma += n
-    return suma
+    """minimum of operation"""
+    if n < 2 or type(n) is not int:
+        return 0
+    descompose = []
+    val = n
+    i = 1
+    while val != 1:
+        i += 1
+        if val % i == 0:
+            while (val % i == 0 and val != 1):
+                val = val / i
+                descompose.append(i)
+    return sum(descompose)
