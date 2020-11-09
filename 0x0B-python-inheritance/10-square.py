@@ -1,56 +1,21 @@
-#!/usr/bin/env python3
-
+#!/usr/bin/python3
+"""Square inherits from Rectangle which inherits from BaseGeometry
 """
-Redis module.
-"""
-
-from functools import wraps
-import redis
-import sys
-from typing import Union, Optional, Callable
-from uuid import uuid4
+Rectangle = __import__('9-rectangle').Rectangle
 
 
-class Cache:
-    """
-    Cache class.
+class Square(Rectangle):
+    """Square data that inherits from Rectangle
+       init `size` twice because width and height are same in squares
     """
 
-    def __init__(self):
-        """
-        Constructor.
-        """
-        self._redis = redis.Redis()
-        self._redis.flushdb()
+    def __init__(self, size):
+        super().integer_validator("size", size)
+        super().__init__(size, size)
+        self.__size = size
 
-    @count_calls
-    @call_history
-    def store(self, data: Union[str, bytes, int, float]) -> str:
+    def area(self):
+        """Method to calculate area of the square
         """
-        Generates random key and store input data in Redis.
-        """
-        key = str(uuid4())
-        self._redis.set(key, data)
-        return key
 
-    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str,
-                                                                    bytes,
-                                                                    int,
-                                                                    float]:
-        """
-        Gets data from Redis.
-        """
-        res = self._redis.get(key)
-        return fn(res) if fn else res
-
-    def get_str(self, data: bytes) -> str:
-        """
-        Converts bytes to string.
-        """
-        return data.decode('utf-8')
-
-    def get_int(self, data: bytes) -> int:
-        """
-        Converts bytes to int.
-        """
-        return int.from_bytes(data, sys.byteorder)
+        return self.__size * self.__size
