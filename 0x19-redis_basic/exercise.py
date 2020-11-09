@@ -3,14 +3,16 @@
 import redis
 import uuid
 
+
 class Cache():
     """ dfjskf"""
     def __init__():
         """dfjh"""
-        _redis=r.Redis()
+        _redis = r.Redis()
         r.flushdb()
+
     def store(data):
         """dsfjh"""
-        id=uuid.uuid1()
+        id = uuid.uuid1()
         _redis.set(id, data)
         return id
