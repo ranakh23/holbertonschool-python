@@ -13,6 +13,9 @@ class Cache():
 
     def store(self, data):
         """dsfjh"""
-        id = uuid.uuid1()
-        self._redis.set(id, data)
-        return id
+        allowed_vtypes = (str, bytes, float, int)
+        data = "" + data
+        if isinstance(data, allowed_vtypes):
+            id = uuid.uuid1()
+            self._redis.set(id, data)
+            return id
