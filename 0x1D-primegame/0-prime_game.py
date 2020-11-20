@@ -1,42 +1,31 @@
 #!/usr/bin/python3
-"""
-isWinner function
-"""
-
-
-def isPrime(n: int) -> bool:
-    """ determines if n is prime """
-    if n <= 1:
-        return False
-    for i in range(2, (n // 2) + 1):
-        if n % i == 0:
-            return False
-    return True
+""" Module for Prime Game """
 
 
 def isWinner(x, nums):
-    """ determines the winner of the game """
-    p1 = int()
-    p2 = int()
-
-    for turn in range(x):
-        for n in range(len(nums)):
-            if isPrime(nums[n]):
-                temp = nums[n]
-                nums.pop(n)
-                for i in nums:
-                    if i % temp == 0:
-                        nums.remove(i)
-                if turn % 2 == 0:
-                    p1 += 1
-                else:
-                    p2 += 1
-                break
-
-            if n + 1 == len(nums) and p1 == 0 and p2 == 0:
-                return None
-    if p1 == p2:
+    """Solves Prime Game"""
+    if not nums or x < 1:
         return None
-    if p1 > p2:
+    n = max(nums)
+    sieve = [True for _ in range(max(n + 1, 2))]
+    for i in range(2, int(pow(n, 0.5)) + 1):
+        if not sieve[i]:
+            continue
+        for j in range(i*i, n + 1, i):
+            sieve[j] = False
+
+    sieve[0] = sieve[1] = False
+    c = 0
+    for i in range(len(sieve)):
+        if sieve[i]:
+            c += 1
+        sieve[i] = c
+
+    player1 = 0
+    for n in nums:
+        player1 += sieve[n] % 2 == 1
+    if player1 * 2 == len(nums):
+        return None
+    if player1 * 2 > len(nums):
         return "Maria"
     return "Ben"
